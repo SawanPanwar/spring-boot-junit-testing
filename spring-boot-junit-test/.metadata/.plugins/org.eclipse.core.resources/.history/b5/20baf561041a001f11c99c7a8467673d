@@ -1,0 +1,36 @@
+package com.rays.test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.rays.dto.UserDTO;
+import com.rays.service.UserService;
+
+@SpringBootTest
+public class TestUserService {
+
+	@Autowired
+	private UserService userService;
+
+	@Test
+	public void testAdd() {
+		UserDTO dto = new UserDTO();
+		long result = userService.add(dto);
+		assertEquals(1L, result);
+	}
+
+	@Test
+	public void testUpdate() {
+		UserDTO dto = new UserDTO();
+		userService.update(dto);
+	}
+
+	@Test
+	public void testDelete() {
+		userService.delete(1L);
+	}
+
+}
